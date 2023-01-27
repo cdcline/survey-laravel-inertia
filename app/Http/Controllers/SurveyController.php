@@ -16,7 +16,7 @@ class SurveyController extends Controller
    public function index()
    {
       return Inertia::render('Surveys/Index', [
-         //
+         'surveys' => Survey::with('user:id,name')->latest()->get(),
       ]);
    }
 
@@ -27,7 +27,9 @@ class SurveyController extends Controller
     */
    public function create()
    {
-      //
+      return Inertia::render('Surveys/Edit', [
+         //
+      ]);
    }
 
    /**
@@ -66,7 +68,9 @@ class SurveyController extends Controller
     */
    public function edit(Survey $survey)
    {
-      //
+      return Inertia::render('Surveys/Edit', [
+         //
+      ]);
    }
 
    /**

@@ -27,7 +27,10 @@ Route::get('/', function () {
 });
 
 Route::resource('survey', SurveyController::class)
-   ->only(['index', 'store'])
+   ->only(['index']);
+
+Route::resource('survey', SurveyController::class)
+   ->only(['create', 'edit', 'store'])
    ->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {

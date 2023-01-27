@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSurveyRequest;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -35,17 +36,13 @@ class SurveyController extends Controller
    /**
     * Store a newly created resource in storage.
     *
-    * @param  \Illuminate\Http\Request  $request
+    * @param  \Illuminate\Http\StoreSurveyRequest  $request
     * @return \Illuminate\Http\Response
     */
-   public function store(Request $request)
+   public function store(StoreSurveyRequest $request)
    {
-      $validated = $request->validate([
-         'title' => 'required|string|max:255',
-      ]);
-
+      $validated = $request->validated();
       $request->user()->surveys()->create($validated);
-
       return redirect(route('survey.index'));
    }
 
@@ -69,20 +66,26 @@ class SurveyController extends Controller
    public function edit(Survey $survey)
    {
       return Inertia::render('Surveys/Edit', [
-         //
+         'surveys' => Survey::with('user:id,name')->latest()->get(),
       ]);
    }
 
    /**
     * Update the specified resource in storage.
     *
-    * @param  \Illuminate\Http\Request  $request
+    * @param  \Illuminate\Http\StoreSurveyRequest  $request
     * @param  \App\Models\Survey  $survey
     * @return \Illuminate\Http\Response
     */
-   public function update(Request $request, Survey $survey)
+   public function update(StoreSurveyRequest $request, Survey $survey)
    {
-      //
+
+
+      $validated = $request->validated();
+
+      $survey->update($validated);
+
+      return redirect(route('survey.index'));
    }
 
    /**

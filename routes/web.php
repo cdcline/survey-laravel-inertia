@@ -30,7 +30,7 @@ Route::resource('survey', SurveyController::class)
    ->only(['index']);
 
 Route::resource('survey', SurveyController::class)
-   ->only(['create', 'edit', 'store'])
+   ->only(['create', 'edit', 'store', 'update'])
    ->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {

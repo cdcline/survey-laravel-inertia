@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,6 +32,10 @@ Route::resource('survey', SurveyController::class)
 
 Route::resource('survey', SurveyController::class)
    ->only(['create', 'edit', 'store', 'update'])
+   ->middleware(['auth', 'verified']);
+
+Route::resource('question', QuestionController::class)
+   ->only(['index', 'store'])
    ->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {

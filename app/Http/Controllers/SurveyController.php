@@ -79,12 +79,9 @@ class SurveyController extends Controller
     */
    public function update(StoreSurveyRequest $request, Survey $survey)
    {
-
-
+      $this->user()->can('update');
       $validated = $request->validated();
-
       $survey->update($validated);
-
       return redirect(route('survey.index'));
    }
 

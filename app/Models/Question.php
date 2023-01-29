@@ -10,8 +10,9 @@ class Question extends Model
    use HasFactory;
 
    protected $fillable = [
-      'text',
-      'survey_id'
+      'survey_id',
+      'type',
+      'text'
    ];
 
    public function user()

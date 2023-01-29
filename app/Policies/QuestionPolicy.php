@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Survey;
+use App\Models\Question;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class SurveyPolicy
+class QuestionPolicy
 {
    use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class SurveyPolicy
     * Determine whether the user can view the model.
     *
     * @param  \App\Models\User  $user
-    * @param  \App\Models\Survey  $survey
+    * @param  \App\Models\Question  $question
     * @return \Illuminate\Auth\Access\Response|bool
     */
-   public function view(User $user, Survey $survey)
+   public function view(User $user, Question $question)
    {
       //
    }
@@ -48,22 +48,22 @@ class SurveyPolicy
     * Determine whether the user can update the model.
     *
     * @param  \App\Models\User  $user
-    * @param  \App\Models\Survey  $survey
+    * @param  \App\Models\Question  $question
     * @return \Illuminate\Auth\Access\Response|bool
     */
-   public function update(User $user, Survey $survey)
+   public function update(User $user, Question $question)
    {
-      return $survey->user()->is($user);
+      //
    }
 
    /**
     * Determine whether the user can delete the model.
     *
     * @param  \App\Models\User  $user
-    * @param  \App\Models\Survey  $survey
+    * @param  \App\Models\Question  $question
     * @return \Illuminate\Auth\Access\Response|bool
     */
-   public function delete(User $user, Survey $survey)
+   public function delete(User $user, Question $question)
    {
       //
    }
@@ -72,10 +72,10 @@ class SurveyPolicy
     * Determine whether the user can restore the model.
     *
     * @param  \App\Models\User  $user
-    * @param  \App\Models\Survey  $survey
+    * @param  \App\Models\Question  $question
     * @return \Illuminate\Auth\Access\Response|bool
     */
-   public function restore(User $user, Survey $survey)
+   public function restore(User $user, Question $question)
    {
       //
    }
@@ -84,10 +84,10 @@ class SurveyPolicy
     * Determine whether the user can permanently delete the model.
     *
     * @param  \App\Models\User  $user
-    * @param  \App\Models\Survey  $survey
+    * @param  \App\Models\Question  $question
     * @return \Illuminate\Auth\Access\Response|bool
     */
-   public function forceDelete(User $user, Survey $survey)
+   public function forceDelete(User $user, Question $question)
    {
       //
    }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreQuestionRequest;
 use App\Models\Question;
 use App\Models\Survey;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class QuestionController extends Controller
    {
       return Inertia::render('Questions/Index', [
          'surveys' => Survey::with('user:id,name')->latest()->get(),
+         'answerTypes' => config('question.answer_types')
       ]);
    }
 
@@ -34,18 +36,13 @@ class QuestionController extends Controller
    /**
     * Store a newly created resource in storage.
     *
-    * @param  \Illuminate\Http\Request  $request
+    * @param  \Illuminate\Http\StoreQuestionRequest  $request
     * @return \Illuminate\Http\Response
     */
-   public function store(Request $request)
+   public function store(StoreQuestionRequest $request)
    {
-      $validated = $request->validate([
-         'survey_id' => 'required|int',
-         'text' => 'required|string|max:255',
-      ]);
-
+      $validated = $request->validated();
       $request->user()->questions()->create($validated);
-
       return redirect(route('question.index'));
    }
 

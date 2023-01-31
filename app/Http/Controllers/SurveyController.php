@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSurveyRequest;
 use App\Models\Survey;
-use Illuminate\Http\Request;
+use App\Models\Question;
 use Inertia\Inertia;
 
 class SurveyController extends Controller
@@ -54,7 +54,10 @@ class SurveyController extends Controller
     */
    public function show(Survey $survey)
    {
-      //
+      return Inertia::render('Surveys/Show', [
+         'survey' => $survey,
+         'questions' => Question::where('survey_id', $survey->id)->get(),
+      ]);
    }
 
    /**

@@ -8,7 +8,7 @@ export default function Guest({ children }) {
                 <Link href="/">
                     <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
                 </Link>
-                <Link href={route('survey.index')} active={route().current('survey.index')}>
+                <Link href={route('survey.index')} active={route().current('survey.index') ? 'true' : 'false'}>
                   Surveys
                 </Link>
             </div>

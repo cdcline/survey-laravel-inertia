@@ -64,7 +64,7 @@ export default function Survey({ survey }) {
                             <button className="mt-4" onClick={() => { setEditing(false); reset(); clearErrors(); }}>Cancel</button>
                         </div>
                     </form>
-                    : <p className="mt-4 text-lg text-gray-900">{survey.title}</p>
+                    : <p className="mt-4 text-lg text-gray-900"><a href={route('survey.show', survey.id)}>{survey.title}</a></p>
                 }
             </div>
         </div>

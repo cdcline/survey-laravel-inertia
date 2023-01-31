@@ -28,7 +28,7 @@ Route::get('/', function () {
 });
 
 Route::resource('survey', SurveyController::class)
-   ->only(['index']);
+   ->only(['index', 'show']);
 
 Route::resource('survey', SurveyController::class)
    ->only(['create', 'edit', 'store', 'update'])
